@@ -13,6 +13,6 @@ RUN apk --no-cache add --virtual .build-deps bash curl tar libxml2-utils \
     && apk del .build-deps \
     && rm -f jet-linux_amd64_${JET_VERSION}.tar.gz
 
-WORKDIR /root
+WORKDIR /jet
 
 ENTRYPOINT ["/usr/local/bin/jet"]
