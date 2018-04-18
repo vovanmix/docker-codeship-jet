@@ -1,11 +1,9 @@
 FROM alpine:latest
 
-##/
- # Copy files
- #/
 COPY rootfs /
 
-RUN apk --no-cache add --virtual .build-deps bash curl tar libxml2-utils \
+RUN apk --no-cache add bash \
+    && apk --no-cache add --virtual .build-deps curl tar libxml2-utils \
     && export JET_VERSION=$(/opt/scripts/jet-latest.sh) \
     && curl -SLO "https://s3.amazonaws.com/codeship-jet-releases/${JET_VERSION}/jet-linux_amd64_${JET_VERSION}.tar.gz" \
     && tar -xaC /usr/local/bin -f jet-linux_amd64_${JET_VERSION}.tar.gz \
